@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',    filename='style.css') }}">
+    <title>Caspar's Lamp</title>
+</head>
+<body>
+    <main>
+        <header>
+            <img src="{{ url_for('static',    filename='/img/Caspars-Lamp.png') }}" alt="">
+        </header>
+        <div class="wrapper">
+            <div class="slider">
+                <div class="bar"></div>
+                <div class="marker"></div>
+            </div>
+            <div class="block-container">
+                <img src="{{ url_for('static',    filename='/img/StoneNew.png') }}" alt="" class="selected block">
+                <img src="{{ url_for('static',    filename='/img/DiamondOreNew.png') }}" alt="" class="block">
+                <img src="{{ url_for('static',    filename='/img/GoldOreNew.png') }}" alt="" class="block">
+                <img src="{{ url_for('static',    filename='/img/IronOreNew.png') }}" alt="" class="block">
+                <img src="{{ url_for('static',    filename='/img/LapisLazuliNew.png') }}" alt="" class="block">
+                <img src="{{ url_for('static',    filename='/img/RedstoneOreNew.png') }}" alt="" class="block">
+            </div>
+        </div>
+    </main>
+    
+    <script src="{{ url_for('static',    filename='/script.js') }}"></script>
+</body>
+</html>
