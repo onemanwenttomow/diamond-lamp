@@ -45,6 +45,10 @@ header {
     align-self: center;
 }
 
+.slider.slider-off {
+    opacity: 0.2;
+}
+
 .bar {
     position: absolute;
     top: 200px;

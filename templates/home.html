@@ -9,24 +9,25 @@
 <body>
     <main>
         <header>
-            <img src="{{ url_for('static',    filename='/img/Caspars-Lamp.png') }}" alt="">
+            <img src="{{ url_for('static',    filename='img/Caspars-Lamp.png') }}" alt="">
         </header>
         <div class="wrapper">
-            <div class="slider">
+            <div class="slider slider-off">
                 <div class="bar"></div>
                 <div class="marker"></div>
             </div>
             <div class="block-container">
-                <img src="{{ url_for('static',    filename='/img/StoneNew.png') }}" alt="" class="selected block">
-                <img src="{{ url_for('static',    filename='/img/DiamondOreNew.png') }}" alt="" class="block">
-                <img src="{{ url_for('static',    filename='/img/GoldOreNew.png') }}" alt="" class="block">
-                <img src="{{ url_for('static',    filename='/img/IronOreNew.png') }}" alt="" class="block">
-                <img src="{{ url_for('static',    filename='/img/LapisLazuliNew.png') }}" alt="" class="block">
-                <img src="{{ url_for('static',    filename='/img/RedstoneOreNew.png') }}" alt="" class="block">
+                <img src="{{ url_for('static',    filename='img/StoneNew.png') }}" alt="" class="selected block" id="off">
+                <img src="{{ url_for('static',    filename='img/DiamondOreNew.png') }}" alt="" class="block" id="diamond">
+                <img src="{{ url_for('static',    filename='img/GoldOreNew.png') }}" alt="" class="block" id="gold">
+                <img src="{{ url_for('static',    filename='img/IronOreNew.png') }}" alt="" class="block" id="iron">
+                <img src="{{ url_for('static',    filename='img/LapisLazuliNew.png') }}" alt="" class="block" id="lapis">
+                <img src="{{ url_for('static',    filename='img/RedstoneOreNew.png') }}" alt="" class="block" id="red">
             </div>
         </div>
     </main>
     
-    <script src="{{ url_for('static',    filename='/script.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ url_for('static',    filename='script.js') }}"></script>
 </body>
 </html>
