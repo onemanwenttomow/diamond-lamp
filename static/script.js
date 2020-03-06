@@ -19,6 +19,22 @@ document.addEventListener("mouseup", function() {
     document.removeEventListener("mousemove", handleMouseMove, false);
 });
 
+async function postData(url = "", data = {}) {
+    const response = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    return await response.json(); // parses JSON response into native JavaScript objects
+}
+
 function handleMouseMove(e) {
     e.preventDefault();
     var distance = e.clientY - 10 - sliderDistanceFromTop;
@@ -28,38 +44,17 @@ function handleMouseMove(e) {
         marker.style.top = distance + "px";
         bar.style.top = distance + "px";
         bar.style.height = 410 - e.clientY + sliderDistanceFromTop + "px";
-        selected.style.opacity = userSelectedOpacity;
-        
-        axios.post("/switch-brightness", {
-                opacity: userSelectedOpacity - 0.2
-            }).then(data => {
-                console.log("data: ", data);
-            }).catch(err => console.log("err: ", err));
+        selected.style.opacity = userSelectedOpacity; 
+
+        postData("/switch-brightness", {
+            opacity: userSelectedOpacity - 0.2
+        }).then(data => {
+            console.log(data); 
+        });
     }
 }
 
-// Example POST method implementation:
-async function postData(url = "", data = {}) {
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json"
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: "follow", // manual, *follow, error
-        referrerPolicy: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(data) // body data type must match "Content-Type" header
-    });
-    return await response.json(); // parses JSON response into native JavaScript objects
-}
 
-postData("https://example.com/answer", { answer: 42 }).then(data => {
-    console.log(data); // JSON data parsed by `response.json()` call
-});
 
 
 function selectBlock(e) {
@@ -74,10 +69,11 @@ function selectBlock(e) {
         ? slider.classList.add("slider-off")
         : slider.classList.remove("slider-off");
 
-    axios.post("/switch-colour", {
-            opacity: userSelectedOpacity - 0.2,
-            color: e.target.id
-        }).then(data => {
-            console.log("data: ", data);
-        }).catch(err => console.log("err: ", err));
+    postData("/switch-colour", {
+        opacity: userSelectedOpacity - 0.2,
+        color: e.target.id
+    }).then(data => {
+        console.log(data); 
+    });
+
 }
