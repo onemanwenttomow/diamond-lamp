@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS
-import unicornhat as uh
-uh.set_layout(uh.PHAT)
-uh.brightness(0.5)
+# import unicornhat as uh
+# uh.set_layout(uh.PHAT)
+# uh.brightness(0.5)
 
 
 # configuration
@@ -44,10 +44,10 @@ def home():
 def postmethod():
     post_data = request.get_json()
     print("post_data: ", post_data['color'])
-    for x in range(8):
-        for y in range(4):
-            uh.set_pixel(x, y, post_data['color'].r, post_data['color'].g, post_data['color'].b)
-    uh.show()
+    # for x in range(8):
+    #     for y in range(4):
+    #         uh.set_pixel(x, y, post_data['color'].r, post_data['color'].g, post_data['color'].b)
+    # uh.show()
     return jsonify({"success": "true"})
 
 
@@ -55,7 +55,7 @@ def postmethod():
 def postmethodbright():
     post_data = request.get_json()
     print("post_data: ", post_data['opacity'])
-    uh.brightness(post_data['opacity'])
+    # uh.brightness(post_data['opacity'])
     return jsonify({"success": "true"})
 
 
