@@ -43,10 +43,11 @@ def home():
 @app.route('/switch-colour', methods=['POST'])
 def postmethod():
     post_data = request.get_json()
-    print("post_data: ", post_data['color'])
+    color = post_data['color'];
+    print("post_data: ", color)
     # for x in range(8):
     #     for y in range(4):
-    #         uh.set_pixel(x, y, post_data['color'].r, post_data['color'].g, post_data['color'].b)
+    #         uh.set_pixel(x, y, color.r, color.g, color.b)
     # uh.show()
     return jsonify({"success": "true"})
 
@@ -56,8 +57,10 @@ def postmethodbright():
     post_data = request.get_json()
     print("post_data: ", post_data['opacity'])
     # uh.brightness(post_data['opacity'])
+    # uh.show()
+
     return jsonify({"success": "true"})
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=80)
