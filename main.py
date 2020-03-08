@@ -45,12 +45,9 @@ def postmethod():
     post_data = request.get_json()
     color = post_data['color'];
     print("post_data: ", color)
-    print("post_data: ", color.r)
-    print("post_data: ", color.g)
-    print("post_data: ", color.b)
     for x in range(8):
         for y in range(4):
-            uh.set_pixel(x, y, color.r, color.g, color.b)
+            uh.set_pixel(x, y, post_data['color'].r, post_data['color'].g, post_data['color'].b)
     uh.show()
     return jsonify({"success": "true"})
 
